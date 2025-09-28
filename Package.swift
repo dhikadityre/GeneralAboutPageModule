@@ -5,17 +5,26 @@ import PackageDescription
 
 let package = Package(
     name: "GeneralAboutPageModule",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "GeneralAboutPageModule",
-            targets: ["GeneralAboutPageModule"]),
+            targets: ["GeneralAboutPageModule"]
+        ),
+    ],
+    dependencies: [
+        .package(path: "../../Module/AlgoreadMePackageData")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "GeneralAboutPageModule"),
+            name: "GeneralAboutPageModule",
+            dependencies: [
+                "AlgoreadMePackageData"
+            ],
+            path: "Sources/GeneralAboutPageModule"
+        ),
         .testTarget(
             name: "GeneralAboutPageModuleTests",
             dependencies: ["GeneralAboutPageModule"]
